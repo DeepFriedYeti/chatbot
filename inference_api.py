@@ -24,7 +24,8 @@ def main():
     if 'chat_history' not in st.session_state:
         st.session_state['chat_history']=[]
     if st.session_state['key']=='':
-        key()  
+        key()
+        st.rerun()
     st.markdown(
     """
     <style>
