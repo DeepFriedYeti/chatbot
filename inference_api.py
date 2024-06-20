@@ -3,13 +3,28 @@ import streamlit as st
 from utils import generate_response
 
 messages=[]
-client = InferenceClient(model="mistralai/Mixtral-8x7B-Instruct-v0.1")
+
+if 'key' not in st.session_state:
+    st.session_state['key']=''
+
+if st.session_state['key']=='':
+    client = InferenceClient(model="mistralai/Mixtral-8x7B-Instruct-v0.1")
+else:
+    client = InferenceClient(model="mistralai/Mixtral-8x7B-Instruct-v0.1",token=st.session_state['key'])
+@st.experimental_dialog("Name")
+def key():
+    st.write("Enter API key")
+    token = st.text_input("Enter here...")
+    if st.button("Submit"):
+        st.session_state['key']=token
+        st.rerun()
 
 def main():
     st.set_page_config(page_title="Chatbot")
     if 'chat_history' not in st.session_state:
         st.session_state['chat_history']=[]
-            
+    if st.session_state['key']=='':
+        key()  
     st.markdown(
     """
     <style>
