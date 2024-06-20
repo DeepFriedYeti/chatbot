@@ -6,7 +6,7 @@ messages=[]
 client = InferenceClient(model="mistralai/Mixtral-8x7B-Instruct-v0.1")
 
 def main():
-    st.set_page_config(
+    st.set_page_config(page_title="Chatbot")
     if 'chat_history' not in st.session_state:
         st.session_state['chat_history']=[]
             
