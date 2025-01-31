@@ -41,7 +41,7 @@ def generate_response(messages,prompt,client):
     with st.chat_message("assistant"):
         # temperature of 0.1 for low randomness 
         # and maximum tokens set to 1024, to not cut-off the response in between
-        response_text = st.write(client.chat_completion(messages,stream=True,max_tokens=1024,temperature=0.1))
+        response_text = st.write(client.chat_completion(messages,stream=False,max_tokens=1024,temperature=0.1))
     messages.pop()
     messages.append({"role":"user","content":prompt})    
     messages.append({"role":"assistant","content":response_text})
