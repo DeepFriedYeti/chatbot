@@ -46,7 +46,7 @@ def query_vector_store(index, sentences, model, query, top_k=5):
     return results
 
 def handle_query(query, embeddings_file='embeddings.joblib', index_file='index.faiss', model_name='all-MiniLM-L6-v2'):
-    pdf_path = 'FS-Rules_2024_v1.1-2.pdf'
+    pdf_path = 'FS-Rules_2025_v1.1.pdf'
     if os.path.exists(embeddings_file) and os.path.exists(index_file):
         # Load existing embeddings and index
         sentences, index = load_vector_store(embeddings_file, index_file)
